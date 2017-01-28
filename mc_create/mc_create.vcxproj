@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{468C2278-59BF-41F6-AD38-D71E93249F0D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>mc_create</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Ws2_32.lib;Winmm.lib;UxTheme.lib;Dwmapi.lib;Imm32.lib;qtpcred.lib;qtlibpngd.lib;qtharfbuzzd.lib;qtmaind.lib;qt5cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;Qt5PlatformCompositorSupportd.lib;Qt5FontDatabaseSupportd.lib;Qt5ThemeSupportd.lib;Qt5EventDispatcherSupportd.lib;Qt5AccessibilitySupportd.lib;Qt5Xmld.lib;qtfreetyped.lib;cryptlibd.lib;popplerd.lib;poppler-qt5d.lib;openjpegd.lib;$(SolutionDir)$(Configuration)\mc_common.lib;$(QTDIR)\plugins\platforms\qwindowsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Ws2_32.lib;Winmm.lib;UxTheme.lib;Dwmapi.lib;Imm32.lib;qtpcre.lib;qtlibpng.lib;qtharfbuzz.lib;qtmain.lib;qt5core.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt5PlatformCompositorSupport.lib;Qt5FontDatabaseSupport.lib;Qt5ThemeSupport.lib;Qt5Xml.lib;Qt5EventDispatcherSupport.lib;Qt5AccessibilitySupport.lib;qtfreetype.lib;cryptlib.lib;poppler.lib;poppler-qt5.lib;openjpeg.lib;$(SolutionDir)$(Configuration)\mc_common.lib;$(QTDIR)\plugins\platforms\qwindows.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent>
+      <Command>$(SolutionDir)\tools\increase-build.bat $(ProjectDir)\version.h</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Increase release build number</Message>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\tools\pack.bat $(TargetPath)</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Pack with UPX</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="crypt.cpp" />
+    <ClCompile Include="gen\cpp\moc_MainDialog.cpp" />
+    <ClCompile Include="gen\res\qrc_resources.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="misc.cpp" />
+    <ClCompile Include="pdf.cpp" />
+    <ClCompile Include="res.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MainDialog.hpp" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="utils.h" />
+    <ClInclude Include="version.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gen\translations\translations_ru.ts" />
+    <None Include="resources.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\moc.targets" />
+  </ImportGroup>
+</Project>

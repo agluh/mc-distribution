@@ -1,0 +1,13 @@
+debug/*
+release/*
+mc_common/debug/*
+mc_common/release/*
+mc_create/debug/*
+mc_create/release/*
+mc_create/resources/keys/*
+mc_keygen/debug/*
+mc_keygen/release/*
+mc_keygen/resources/keys/*
+mc_view/debug/*
+mc_view/release/*
+mc_view/resources/keys/*

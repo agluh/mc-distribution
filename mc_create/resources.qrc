@@ -1,0 +1,8 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource prefix="/">
+    <file>resources/main.png</file>
+    <file>gen/translations/translations_ru.qm</file>
+    <file alias="public.dat">resources/keys/public.dat</file>
+  </qresource>
+</RCC>
