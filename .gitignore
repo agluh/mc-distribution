@@ -11,3 +11,4 @@ mc_keygen/resources/keys/*
 mc_view/debug/*
 mc_view/release/*
 mc_view/resources/keys/*
+*.suo

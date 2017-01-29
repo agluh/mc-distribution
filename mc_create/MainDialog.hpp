@@ -186,21 +186,12 @@ private slots:
 
 			return;
 		}
-
-		// Check if output file not exists
-		QFile outputFile(m_outputFile);
-		if (outputFile.exists()) {
-			QMessageBox::StandardButton reply = QMessageBox::warning(this, QObject::tr("File already exists"), QObject::tr("File %1 already exists.<br/><br/>Overwrite existing file?").arg(m_outputFile), QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
-			if (reply == QMessageBox::No) {
-				return;
-			}
-		}
-
+		
 		// Prepare to run operation
 		WaitDialog splash(tr("Operation in progress"), tr("Please wait"), this);
 		QFutureWatcher<void> watcher;
 		connect(&watcher, SIGNAL(finished()), &splash, SLOT(close()));
-		QFuture<void> future = QtConcurrent::run(processData, m_pdfFile, &outputFile, trimmedLinkText, trimmedWatermarkText, trimmedCommentsText);
+		QFuture<void> future = QtConcurrent::run(processData, m_pdfFile, m_outputFile, trimmedLinkText, trimmedWatermarkText, trimmedCommentsText);
 		watcher.setFuture(future);
 		splash.exec();
 

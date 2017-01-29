@@ -70,30 +70,30 @@
         <translation>Текстовые поля не могут быть пустыми или состоять из одних пробелов.</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="200"/>
+        <location filename="../../MainDialog.hpp" line="191"/>
         <source>Operation in progress</source>
         <translation>Операция в процессе выполнения</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="200"/>
+        <location filename="../../MainDialog.hpp" line="191"/>
         <source>Please wait</source>
         <translation>Пожалуйста, подождите</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="211"/>
+        <location filename="../../MainDialog.hpp" line="202"/>
         <source>Completed</source>
         <translation>Завершено</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="212"/>
+        <location filename="../../MainDialog.hpp" line="203"/>
         <source>The operation completed successfully.</source>
         <translation>Операция успешно завершена.</translation>
     </message>
     <message>
         <location filename="../../MainDialog.hpp" line="167"/>
         <location filename="../../MainDialog.hpp" line="182"/>
-        <location filename="../../MainDialog.hpp" line="219"/>
-        <location filename="../../MainDialog.hpp" line="226"/>
+        <location filename="../../MainDialog.hpp" line="210"/>
+        <location filename="../../MainDialog.hpp" line="217"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
@@ -103,12 +103,12 @@
         <translation>Выбрать выходной файл</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="220"/>
+        <location filename="../../MainDialog.hpp" line="211"/>
         <source>An error has occurred: %1</source>
         <translation>Возникла ошибка: %1</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="227"/>
+        <location filename="../../MainDialog.hpp" line="218"/>
         <source>An unknown error has occurred.</source>
         <translation>Возникла неизвестная ошибка.</translation>
     </message>
@@ -121,27 +121,17 @@
         <translation>Не удалось прочитать PDF файл.</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="193"/>
-        <source>File already exists</source>
-        <translation>Файл уже существует</translation>
-    </message>
-    <message>
-        <location filename="../../MainDialog.hpp" line="193"/>
-        <source>File %1 already exists.&lt;br/&gt;&lt;br/&gt;Overwrite existing file?</source>
-        <translation>Файл %1 уже существует.&lt;br/&gt;&lt;br/&gt;Перезаписать имеющийся файл?</translation>
-    </message>
-    <message>
-        <location filename="../../misc.cpp" line="14"/>
+        <location filename="../../misc.cpp" line="13"/>
         <source>Unable to load data from resources.</source>
         <translation>Не удалось загрузить данные из ресурсов.</translation>
     </message>
     <message>
-        <location filename="../../misc.cpp" line="22"/>
+        <location filename="../../misc.cpp" line="21"/>
         <source>Unable to create output file %1.</source>
         <translation>Не удалось создать файл %1.</translation>
     </message>
     <message>
-        <location filename="../../misc.cpp" line="26"/>
+        <location filename="../../misc.cpp" line="25"/>
         <source>Unable to write data to output file %1.</source>
         <translation>Не удалось записать данные в файл %1.</translation>
     </message>

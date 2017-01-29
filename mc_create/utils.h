@@ -13,7 +13,7 @@ QByteArray createData(const QString &, const QString &, const QString &, const Q
 bool isCorrectPDF(const QString &);
 void* loadViewerData(unsigned long *);
 bool updateViewerResources(const char*, void *, unsigned long);
-void processData(const QString &, QFile *, const QString &, const QString &, const QString &);
+void processData(const QString &, const QString &, const QString &, const QString &, const QString &);
 
 //====================================
 // Helper class for manage errors
