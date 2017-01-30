@@ -19,12 +19,12 @@
         <translation>О&amp;тмена</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="61"/>
+        <location filename="../../MainDialog.hpp" line="60"/>
         <source>&amp;Request data for the key:</source>
         <translation>&amp;Данные для запроса ключа:</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="62"/>
+        <location filename="../../MainDialog.hpp" line="61"/>
         <source>&amp;Key to unlock:</source>
         <translation>&amp;Ключ для разблокировки:</translation>
     </message>
@@ -48,7 +48,7 @@
         <location filename="../../main.cpp" line="60"/>
         <location filename="../../main.cpp" line="93"/>
         <location filename="../../main.cpp" line="100"/>
-        <location filename="../../MainDialog.hpp" line="97"/>
+        <location filename="../../MainDialog.hpp" line="96"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
@@ -73,7 +73,7 @@
         <translation>Возникла неизвестная ошибка.</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="98"/>
+        <location filename="../../MainDialog.hpp" line="97"/>
         <source>Key is not valid.</source>
         <translation>Неверный ключ.</translation>
     </message>

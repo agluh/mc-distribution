@@ -45,9 +45,8 @@ public:
 		m_cancelButton->setDefault(true);
 		QObject::connect(m_cancelButton, SIGNAL(released()), this, SLOT(reject()));
 
-		m_linkLabel = new QLabel();
+		m_linkLabel = new QLabel(manager->getLinkText(), this);
 		m_linkLabel->setTextFormat(Qt::RichText);
-		m_linkLabel->setText(manager->getLinkText());
 		m_linkLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
 		m_linkLabel->setOpenExternalLinks(true);
 
