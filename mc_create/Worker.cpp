@@ -85,64 +85,69 @@ void Worker::doWork(QFutureInterface<void> &future) {
 
 */
 QByteArray Worker::createData() {
-	QByteArray output;
+	QByteArray output, link, watermark, comments;
 
 	// Generate a random AES key
 	QByteArray keyAES = CryptoUtils::generateBlock(CryptoUtils::AESkey);
 	QByteArray ivAES = CryptoUtils::generateBlock(CryptoUtils::AESiv);
 
-	// Convert link string to byte array
-	QByteArray creatorLinkData = m_link.toUtf8();
-
 	// Use RSA encryption for AES key
-	QByteArray keyAESEncrypted = CryptoUtils::encryptRSA(keyAES, ":/public.dat");
+	QByteArray key = CryptoUtils::encryptRSA(keyAES, ":/public.dat");
+
+	// Convert link string to byte array
+	if (m_link.length()) {
+		link = m_link.toUtf8();
+	}
 
 	// Encrypt watermark
-	QByteArray watermarkTextEncrypted = CryptoUtils::encryptAES_CBC(m_watermark.toUtf8(), keyAES, ivAES);
+	if (m_watermark.length()) {
+		watermark = CryptoUtils::encryptAES_CBC(m_watermark.toUtf8(), keyAES, ivAES);
+	}
 
 	// Use RSA encryption for comment
-	QByteArray fileCommentsEncrypted = CryptoUtils::encryptRSA(m_comments.toUtf8(), ":/public.dat");
+	if (m_comments.length()) {
+		comments = CryptoUtils::encryptRSA(m_comments.toUtf8(), ":/public.dat");
+	}
 
 	// Open PDF file and read it content to the buffer
-	QByteArray pdfContent;
 	QFile pdfFile(m_pdfFile);
 	if (!pdfFile.exists() || !pdfFile.open(QIODevice::ReadOnly)) {
 		throw RuntimeError(QObject::tr("Unable to read PDF file."));
 	}
 
-	pdfContent = pdfFile.readAll();
+	QByteArray pdf = pdfFile.readAll();
 	pdfFile.close();
 
 	// Encrypt PDF file content
-	QByteArray pdfContentEncrypted = CryptoUtils::encryptAES_CBC(pdfContent, keyAES, ivAES);
+	QByteArray pdfEncrypted = CryptoUtils::encryptAES_CBC(pdf, keyAES, ivAES);
 
 	// Append IV
 	output.append(ivAES);
 
 	// Append size of encrypted AES key and key itself
-	int len = keyAESEncrypted.size();
+	int len = key.size();
 	output.append((char*)&len, sizeof(len));
-	output.append(keyAESEncrypted);
+	output.append(key);
 
 	// Append size of encrypted watermark and watermark itself
-	len = watermarkTextEncrypted.size();
+	len = watermark.size();
 	output.append((char*)&len, sizeof(len));
-	output.append(watermarkTextEncrypted);
+	output.append(watermark);
 
 	// Append size of encrypted comment and comment itself
-	len = fileCommentsEncrypted.size();
+	len = comments.size();
 	output.append((char*)&len, sizeof(len));
-	output.append(fileCommentsEncrypted);
+	output.append(comments);
 
 	// Append size of creator link and link itself
-	len = creatorLinkData.size();
+	len = link.size();
 	output.append((char*)&len, sizeof(len));
-	output.append(creatorLinkData);
+	output.append(link);
 
 	// Append size PDF data and data itself
-	len = pdfContentEncrypted.size();
+	len = pdfEncrypted.size();
 	output.append((char*)&len, sizeof(len));
-	output.append(pdfContentEncrypted);
+	output.append(pdfEncrypted);
 
 	return output;
 }

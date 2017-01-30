@@ -35,7 +35,6 @@ private:
 	QByteArray m_hash;
 	QByteArray m_hid;
 	QByteArray m_keyDecrypted;
-
 	QByteArray m_pdfData;
 
 	Poppler::Document *m_document;

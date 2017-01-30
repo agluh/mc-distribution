@@ -29,41 +29,49 @@ public:
 		setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 		setFixedSize(500, 400);
 
-		m_requestEdit = new QPlainTextEdit();
+		m_requestEdit = new QPlainTextEdit(this);
 		m_requestEdit->setReadOnly(true);
 		m_requestEdit->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-		m_responseEdit = new QPlainTextEdit();
+		m_responseEdit = new QPlainTextEdit(this);
 		m_responseEdit->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Maximum);
 		QObject::connect(m_responseEdit, SIGNAL(textChanged()), this, SLOT(onResponseChanged()));
 
-		m_okButton = new QPushButton(tr("&OK"));
+		m_okButton = new QPushButton(tr("&OK"), this);
 		m_okButton->setEnabled(false);
 		QObject::connect(m_okButton, SIGNAL(released()), this, SLOT(onOkButton()));
 
-		m_cancelButton = new QPushButton(tr("&Cancel"));
+		m_cancelButton = new QPushButton(tr("&Cancel"), this);
 		m_cancelButton->setDefault(true);
 		QObject::connect(m_cancelButton, SIGNAL(released()), this, SLOT(reject()));
 
-		QLabel *siteLink = new QLabel;
-		siteLink->setTextFormat(Qt::RichText);
-		siteLink->setText(manager->getLinkText());
-		siteLink->setTextInteractionFlags(Qt::TextBrowserInteraction);
-		siteLink->setOpenExternalLinks(true);
+		m_linkLabel = new QLabel();
+		m_linkLabel->setTextFormat(Qt::RichText);
+		m_linkLabel->setText(manager->getLinkText());
+		m_linkLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
+		m_linkLabel->setOpenExternalLinks(true);
 
-		QHBoxLayout *hlayout = new QHBoxLayout;
-		hlayout->addWidget(siteLink);
-		hlayout->addItem(new QSpacerItem(10, 0, QSizePolicy::Expanding, QSizePolicy::Ignored));
-		hlayout->addWidget(m_okButton); 
-		hlayout->addWidget(m_cancelButton);
+		m_hlayout = new QHBoxLayout();
+		m_hlayout->addWidget(m_linkLabel);
+		m_hlayout->addItem(new QSpacerItem(10, 0, QSizePolicy::Expanding, QSizePolicy::Ignored));
+		m_hlayout->addWidget(m_okButton); 
+		m_hlayout->addWidget(m_cancelButton);
 
-		QFormLayout *formLayout = new QFormLayout;
-		formLayout->addRow(tr("&Request data for the key:"), m_requestEdit);
-		formLayout->addRow(tr("&Key to unlock:"), m_responseEdit);
-		formLayout->setRowWrapPolicy(QFormLayout::WrapAllRows);
-		formLayout->addItem(hlayout);
+		m_layout = new QFormLayout(this);
+		m_layout->addRow(tr("&Request data for the key:"), m_requestEdit);
+		m_layout->addRow(tr("&Key to unlock:"), m_responseEdit);
+		m_layout->setRowWrapPolicy(QFormLayout::WrapAllRows);
+		m_layout->addItem(m_hlayout);
 
-		setLayout(formLayout);
+		setLayout(m_layout);
+	}
+
+	~MainDialog() {
+		// iterate through list of children then call delete
+		QObjectList children = this->children();
+		for (auto it = children.begin(); it != children.end(); it++) {
+			delete *it;
+		}
 	}
 
 	void setRequestText(const QString &text) {
@@ -99,6 +107,9 @@ private:
 	QPushButton *m_okButton;
 	QPushButton *m_cancelButton;
 	FileParser *m_manager;
+	QLabel *m_linkLabel;
+	QHBoxLayout *m_hlayout;
+	QFormLayout *m_layout;
 };
 
 #endif // MAINDIALOG_H

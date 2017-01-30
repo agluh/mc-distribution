@@ -36,31 +36,40 @@ FileParser::FileParser(const QByteArray &data) : m_document(nullptr) {
 	len = 0;
 	memcpy(&len, data.data() + offset, sizeof(len));
 	offset += sizeof(len);
-	m_watermark = data.mid(offset, len);
-	if (!len || m_watermark.size() != len) {
-		throw RuntimeError(QObject::tr("File is incorrect."));
+
+	if (len != 0) {
+		m_watermark = data.mid(offset, len);
+		if (!len || m_watermark.size() != len) {
+			throw RuntimeError(QObject::tr("File is incorrect."));
+		}
+		offset += m_watermark.size();
 	}
-	offset += m_watermark.size();
 
 	// Read comments
 	len = 0;
 	memcpy(&len, data.data() + offset, sizeof(len));
 	offset += sizeof(len);
-	m_comments = data.mid(offset, len);
-	if (!len || m_comments.size() != len) {
-		throw RuntimeError(QObject::tr("File is incorrect."));
+
+	if (len != 0) {
+		m_comments = data.mid(offset, len);
+		if (!len || m_comments.size() != len) {
+			throw RuntimeError(QObject::tr("File is incorrect."));
+		}
+		offset += m_comments.size();
 	}
-	offset += m_comments.size();
 
 	// Read link
 	len = 0;
 	memcpy(&len, data.data() + offset, sizeof(len));
 	offset += sizeof(len);
-	m_link = data.mid(offset, len);
-	if (!len || m_link.size() != len) {
-		throw RuntimeError(QObject::tr("File is incorrect."));
+
+	if (len != 0) {
+		m_link = data.mid(offset, len);
+		if (!len || m_link.size() != len) {
+			throw RuntimeError(QObject::tr("File is incorrect."));
+		}
+		offset += m_link.size();
 	}
-	offset += m_link.size();
 
 	// Read PDF data
 	len = 0;
@@ -142,6 +151,10 @@ void FileParser::parseResponse(const QByteArray &response) {
 }
 
 QString FileParser::getWatermarkText() const {
+	if (!m_watermark.size()) {
+		return "";
+	}
+
 	return CryptoUtils::decryptAES_CBC(m_watermark, m_keyDecrypted, m_iv);
 }
 

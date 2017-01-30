@@ -29,14 +29,24 @@
         <translation>&amp;Сгенерированный для клиента ключ</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="121"/>
+        <location filename="../../MainDialog.hpp" line="129"/>
         <source>Link: %1&lt;br/&gt;Watermark: %2&lt;br/&gt;Notes:&lt;br/&gt;%3&lt;br/&gt;&lt;br/&gt;---- Debug data ----&lt;br/&gt;&lt;br/&gt;Hardware ID: %4&lt;br/&gt;AES IV: %5&lt;br/&gt;AES key: %6</source>
         <translation>Ссылка: %1&lt;br/&gt;Водяной знак: %2&lt;br/&gt;Замечания:&lt;br/&gt;%3&lt;br/&gt;&lt;br/&gt;---- Отладочные данные ----&lt;br/&gt;&lt;br/&gt;Аппаратный ID: %4&lt;br/&gt;AES IV: %5&lt;br/&gt;AES ключ: %6</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="137"/>
+        <location filename="../../MainDialog.hpp" line="145"/>
         <source>Entered data is invalid</source>
         <translation>Введённые данные некорректны</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../../crypt.cpp" line="74"/>
+        <location filename="../../crypt.cpp" line="93"/>
+        <location filename="../../crypt.cpp" line="111"/>
+        <source>&lt;None&gt;</source>
+        <translation>&lt;Нет&gt;</translation>
     </message>
 </context>
 </TS>

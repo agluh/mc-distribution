@@ -64,12 +64,12 @@ int main(int argc, char *argv[]) {
 		}
 
 		if (!done) {
-			MainDialog *dialog = new MainDialog(&p);
-			dialog->setRequestText(p.createRequestData());
-			if (dialog->exec() == QDialog::Accepted) {
+			MainDialog dialog(&p);
+			dialog.setRequestText(p.createRequestData());
+			if (dialog.exec() == QDialog::Accepted) {
 				// Save *.lic file
 				if (lic.open(QIODevice::ReadWrite | QIODevice::Truncate)) {
-					QString response = dialog->getResponseText();
+					QString response = dialog.getResponseText();
 					QByteArray responseData = QByteArray::fromBase64(response.toLatin1());
 					lic.write(responseData);
 					lic.flush();

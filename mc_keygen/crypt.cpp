@@ -59,39 +59,57 @@ void parseRequest(const QByteArray &data, QString *watermarkText, QString *comme
 	len = 0;
 	memcpy(&len, data.data() + offset, sizeof(len));
 	offset += sizeof(len);
-	QByteArray watermark_ = data.mid(offset, len);
-	if (!len || watermark_.size() != len) {
-		throw RuntimeError("Incorrect data");
-	}
-	offset += watermark_.size();
 
-	// Decrypt watermark
-	*watermarkText = QString(CryptoUtils::decryptAES_CBC(watermark_, *key, *iv));
+	if (len != 0) {
+		QByteArray watermark_ = data.mid(offset, len);
+		if (watermark_.size() != len) {
+			throw RuntimeError("Incorrect data");
+		}
+		offset += watermark_.size();
+
+		// Decrypt watermark
+		*watermarkText = QString(CryptoUtils::decryptAES_CBC(watermark_, *key, *iv));
+	}
+	else {
+		*watermarkText = QObject::tr("<None>");
+	}
 
 	// Read comments
 	len = 0;
 	memcpy(&len, data.data() + offset, sizeof(len));
 	offset += sizeof(len);
-	QByteArray comments_ = data.mid(offset, len);
-	if (!len || comments_.size() != len) {
-		throw RuntimeError("Incorrect data");
-	}
-	offset += comments_.size();
 
-	// Decrypt comments
-	*commentsText = QString(CryptoUtils::decryptRSA(comments_, ":/private.dat"));
+	if (len != 0) {
+		QByteArray comments_ = data.mid(offset, len);
+		if (comments_.size() != len) {
+			throw RuntimeError("Incorrect data");
+		}
+		offset += comments_.size();
+
+		// Decrypt comments
+		*commentsText = QString(CryptoUtils::decryptRSA(comments_, ":/private.dat"));
+	}
+	else {
+		*commentsText = QObject::tr("<None>");
+	}
 
 	// Read link
 	len = 0;
 	memcpy(&len, data.data() + offset, sizeof(len));
 	offset += sizeof(len);
-	QByteArray link_ = data.mid(offset, len);
-	if (!len || link_.size() != len) {
-		throw RuntimeError("Incorrect data");
-	}
-	offset += link_.size();
 
-	*linkText = QString(link_);
+	if (len != 0) {
+		QByteArray link_ = data.mid(offset, len);
+		if (link_.size() != len) {
+			throw RuntimeError("Incorrect data");
+		}
+		offset += link_.size();
+
+		*linkText = QString(link_);
+	}
+	else {
+		*linkText = QObject::tr("<None>");
+	}
 
 	// Read hardware ID
 	len = 0;

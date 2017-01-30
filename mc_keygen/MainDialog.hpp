@@ -29,7 +29,7 @@ public:
 		setWindowFlags(windowFlags() | Qt::WindowMinimizeButtonHint);
 
 		// Edits
-		m_infoText = new QPlainTextEdit;
+		m_infoText = new QPlainTextEdit(this);
 		m_infoText->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
 		m_infoText->setFixedWidth(200);
 		m_infoText->setReadOnly(true);
@@ -40,67 +40,75 @@ public:
 		textEditPaletteReadOnly.setColor(QPalette::Inactive, QPalette::Base, textEditPaletteNormal.color(QPalette::Disabled, QPalette::Base));
 		m_infoText->setPalette(textEditPaletteReadOnly);
 
-		QLabel *infoTextLabel = new QLabel(tr("&Information about the client:"));
-		infoTextLabel->setBuddy(m_infoText);
+		m_infoTextLabel = new QLabel(tr("&Information about the client:"), this);
+		m_infoTextLabel->setBuddy(m_infoText);
 
-		m_requestText = new QPlainTextEdit;
+		m_requestText = new QPlainTextEdit(this);
 		m_requestText->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 		m_requestText->setPlaceholderText(tr("Put here data recieved from the client"));
 		connect(m_requestText, SIGNAL(textChanged()), this, SLOT(onRequestTextChanged()));
 
-		QLabel *requestTextLabel = new QLabel(tr("&Data from the client:"));
-		requestTextLabel->setBuddy(m_requestText);
+		m_requestTextLabel = new QLabel(tr("&Data from the client:"), this);
+		m_requestTextLabel->setBuddy(m_requestText);
 
-		m_responseText = new QPlainTextEdit;
+		m_responseText = new QPlainTextEdit(this);
 		m_responseText->setReadOnly(true);
 		m_responseText->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 		m_responseText->setFixedHeight(100);
 
-		QLabel *responseTextLabel = new QLabel(tr("&Generated key for the client:"));
-		responseTextLabel->setBuddy(m_responseText);
+		m_responseTextLabel = new QLabel(tr("&Generated key for the client:"), this);
+		m_responseTextLabel->setBuddy(m_responseText);
 
 		// Link
-		QLabel *mailLink = new QLabel;
-		mailLink->setText("<a href=\"mailto:alexg-nn@mail.ru\">alexg-nn@mail.ru</a>");
-		mailLink->setTextInteractionFlags(Qt::TextBrowserInteraction);
-		mailLink->setOpenExternalLinks(true);
-		mailLink->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+		m_mailLinkLabel = new QLabel(this);
+		m_mailLinkLabel->setText("<a href=\"mailto:alexg-nn@mail.ru\">alexg-nn@mail.ru</a>");
+		m_mailLinkLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
+		m_mailLinkLabel->setOpenExternalLinks(true);
+		m_mailLinkLabel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
 		// Layout
-		QVBoxLayout *requestVertLayout = new QVBoxLayout();
-		requestVertLayout->addWidget(requestTextLabel);
-		requestVertLayout->addWidget(m_requestText);
-		requestVertLayout->setSpacing(5);
+		m_requestVertLayout = new QVBoxLayout();
+		m_requestVertLayout->addWidget(m_requestTextLabel);
+		m_requestVertLayout->addWidget(m_requestText);
+		m_requestVertLayout->setSpacing(5);
 
-		QVBoxLayout *responseVertLayout = new QVBoxLayout();
-		responseVertLayout->addWidget(responseTextLabel);
-		responseVertLayout->addWidget(m_responseText);
-		responseVertLayout->setSpacing(5);
+		m_responseVertLayout = new QVBoxLayout();
+		m_responseVertLayout->addWidget(m_responseTextLabel);
+		m_responseVertLayout->addWidget(m_responseText);
+		m_responseVertLayout->setSpacing(5);
 
-		QVBoxLayout *editsVertlayout = new QVBoxLayout();
-		editsVertlayout->addItem(requestVertLayout);
-		editsVertlayout->addItem(responseVertLayout);
-		editsVertlayout->setSpacing(10);
+		m_editsVertlayout = new QVBoxLayout();
+		m_editsVertlayout->addItem(m_requestVertLayout);
+		m_editsVertlayout->addItem(m_responseVertLayout);
+		m_editsVertlayout->setSpacing(10);
 
-		QVBoxLayout *infoVertLayout = new QVBoxLayout();
-		infoVertLayout->addWidget(infoTextLabel);
-		infoVertLayout->addWidget(m_infoText);
-		infoVertLayout->setSpacing(5);
+		m_infoVertLayout = new QVBoxLayout();
+		m_infoVertLayout->addWidget(m_infoTextLabel);
+		m_infoVertLayout->addWidget(m_infoText);
+		m_infoVertLayout->setSpacing(5);
 
-		QHBoxLayout *mainHorLayout = new QHBoxLayout();
-		mainHorLayout->addItem(editsVertlayout);
-		mainHorLayout->addItem(infoVertLayout);
-		mainHorLayout->setSpacing(10);
+		m_mainHorLayout = new QHBoxLayout();
+		m_mainHorLayout->addItem(m_editsVertlayout);
+		m_mainHorLayout->addItem(m_infoVertLayout);
+		m_mainHorLayout->setSpacing(10);
 
-		QHBoxLayout *extraElementsLayout = new QHBoxLayout();
-		extraElementsLayout->addWidget(mailLink);
-		extraElementsLayout->addItem(new QSpacerItem(10, 0, QSizePolicy::Expanding, QSizePolicy::Ignored));
+		m_extraElementsLayout = new QHBoxLayout();
+		m_extraElementsLayout->addWidget(m_mailLinkLabel);
+		m_extraElementsLayout->addItem(new QSpacerItem(10, 0, QSizePolicy::Expanding, QSizePolicy::Ignored));
 
-		QVBoxLayout *layout = new QVBoxLayout();
-		layout->addItem(mainHorLayout);
-		layout->addItem(extraElementsLayout);
+		m_layout = new QVBoxLayout(this);
+		m_layout->addItem(m_mainHorLayout);
+		m_layout->addItem(m_extraElementsLayout);
 
-		setLayout(layout);
+		setLayout(m_layout);
+	}
+
+	~MainDialog() {
+		// iterate through list of children then call delete
+		QObjectList children = this->children();
+		for (auto it = children.begin(); it != children.end(); it++) {
+			delete *it;
+		}
 	}
 
 private slots:
@@ -143,6 +151,19 @@ private:
 	QPlainTextEdit *m_infoText;
 	QPlainTextEdit *m_requestText;
 	QPlainTextEdit *m_responseText;
+
+	QLabel *m_infoTextLabel;
+	QLabel *m_requestTextLabel;
+	QLabel *m_responseTextLabel;
+	QLabel *m_mailLinkLabel;
+
+	QVBoxLayout *m_requestVertLayout;
+	QVBoxLayout *m_responseVertLayout;
+	QVBoxLayout *m_editsVertlayout;
+	QVBoxLayout *m_infoVertLayout;
+	QHBoxLayout *m_mainHorLayout;
+	QHBoxLayout *m_extraElementsLayout;
+	QVBoxLayout *m_layout;
 };
 
 #endif // MAINDIALOG_H

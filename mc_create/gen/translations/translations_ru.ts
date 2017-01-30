@@ -4,111 +4,105 @@
 <context>
     <name>MainDialog</name>
     <message>
-        <location filename="../../MainDialog.hpp" line="35"/>
+        <location filename="../../MainDialog.hpp" line="37"/>
         <source>Create new protected PDF</source>
         <translation>Создать защищённый PDF</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="40"/>
-        <location filename="../../MainDialog.hpp" line="124"/>
+        <location filename="../../MainDialog.hpp" line="42"/>
+        <location filename="../../MainDialog.hpp" line="135"/>
         <source>Select PDF file</source>
         <translation>Выбрать PDF файл</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="44"/>
+        <location filename="../../MainDialog.hpp" line="46"/>
         <source>&amp;Browse</source>
         <translation>&amp;Обзор</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="53"/>
+        <location filename="../../MainDialog.hpp" line="55"/>
         <source>B&amp;rowse</source>
         <translation>О&amp;бзор</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="85"/>
+        <location filename="../../MainDialog.hpp" line="87"/>
         <source>&amp;Create</source>
         <translation>&amp;Создать</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="124"/>
+        <location filename="../../MainDialog.hpp" line="135"/>
         <source>PDF files (*.pdf)</source>
         <translation>PDF файлы (*.pdf)</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="135"/>
+        <location filename="../../MainDialog.hpp" line="146"/>
         <source>Executable files (*.exe)</source>
         <translation>Исполняемые файлы (*.exe)</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="135"/>
+        <location filename="../../MainDialog.hpp" line="146"/>
         <source>Save protected PDF file as</source>
         <translation>Сохранить защищённый PDF файл как</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="146"/>
+        <location filename="../../MainDialog.hpp" line="157"/>
         <source>&amp;Link (%1):</source>
         <translation>Ссы&amp;лка (%1):</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="151"/>
+        <location filename="../../MainDialog.hpp" line="162"/>
         <source>&amp;Watermark (%1):</source>
         <translation>&amp;Водяной знак (%1):</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="157"/>
+        <location filename="../../MainDialog.hpp" line="168"/>
         <source>&amp;Notes (%1):</source>
         <translation>Заме&amp;чания (%1):</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="170"/>
+        <location filename="../../MainDialog.hpp" line="181"/>
         <source>Selected PDF file is not correct or locked.</source>
         <translation>Выбранный PDF файл защищён или не является корректным.</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="185"/>
-        <source>Text fields can not be empty or contains only spaces.</source>
-        <translation>Текстовые поля не могут быть пустыми или состоять из одних пробелов.</translation>
-    </message>
-    <message>
-        <location filename="../../MainDialog.hpp" line="193"/>
+        <location filename="../../MainDialog.hpp" line="189"/>
         <source>Operation in progress</source>
         <translation>Операция в процессе выполнения</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="193"/>
+        <location filename="../../MainDialog.hpp" line="189"/>
         <source>Please wait</source>
         <translation>Пожалуйста, подождите</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="210"/>
+        <location filename="../../MainDialog.hpp" line="206"/>
         <source>Completed</source>
         <translation>Завершено</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="211"/>
+        <location filename="../../MainDialog.hpp" line="207"/>
         <source>The operation completed successfully.</source>
         <translation>Операция успешно завершена.</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="169"/>
-        <location filename="../../MainDialog.hpp" line="184"/>
-        <location filename="../../MainDialog.hpp" line="218"/>
-        <location filename="../../MainDialog.hpp" line="225"/>
+        <location filename="../../MainDialog.hpp" line="180"/>
+        <location filename="../../MainDialog.hpp" line="214"/>
+        <location filename="../../MainDialog.hpp" line="221"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="49"/>
+        <location filename="../../MainDialog.hpp" line="51"/>
         <source>Select output file</source>
         <translation>Выбрать выходной файл</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="219"/>
+        <location filename="../../MainDialog.hpp" line="215"/>
         <source>An error has occurred: %1</source>
         <translation>Возникла ошибка: %1</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="226"/>
+        <location filename="../../MainDialog.hpp" line="222"/>
         <source>An unknown error has occurred.</source>
         <translation>Возникла неизвестная ошибка.</translation>
     </message>
@@ -116,7 +110,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../Worker.cpp" line="110"/>
+        <location filename="../../Worker.cpp" line="115"/>
         <source>Unable to read PDF file.</source>
         <translation>Не удалось прочитать PDF файл.</translation>
     </message>

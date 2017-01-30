@@ -48,7 +48,7 @@
         <location filename="../../main.cpp" line="60"/>
         <location filename="../../main.cpp" line="93"/>
         <location filename="../../main.cpp" line="100"/>
-        <location filename="../../MainDialog.hpp" line="89"/>
+        <location filename="../../MainDialog.hpp" line="97"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
@@ -73,27 +73,27 @@
         <translation>Возникла неизвестная ошибка.</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="90"/>
+        <location filename="../../MainDialog.hpp" line="98"/>
         <source>Key is not valid.</source>
         <translation>Неверный ключ.</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.hpp" line="159"/>
+        <location filename="../../MainWindow.hpp" line="167"/>
         <source>Print</source>
         <translation>Печать</translation>
     </message>
     <message>
-        <location filename="../../MainWindow.hpp" line="159"/>
+        <location filename="../../MainWindow.hpp" line="167"/>
         <source>Value of selected printing resolution %1dpi is too hight. Maximum allowed value is %2dpi.&lt;br/&gt;&lt;br/&gt;Do you want to scale it down to allowed value and continue printing?</source>
         <translation>Выбранное разрешение печати %1dpi слишком велико. Максимально допустимое значение %2dpi.&lt;br/&gt;&lt;/br&gt;Вы хотите уменьшить его до допустимого и продолжить печать?</translation>
     </message>
     <message>
         <location filename="../../FileParser.cpp" line="21"/>
         <location filename="../../FileParser.cpp" line="31"/>
-        <location filename="../../FileParser.cpp" line="41"/>
-        <location filename="../../FileParser.cpp" line="51"/>
-        <location filename="../../FileParser.cpp" line="61"/>
-        <location filename="../../FileParser.cpp" line="71"/>
+        <location filename="../../FileParser.cpp" line="43"/>
+        <location filename="../../FileParser.cpp" line="56"/>
+        <location filename="../../FileParser.cpp" line="69"/>
+        <location filename="../../FileParser.cpp" line="80"/>
         <source>File is incorrect.</source>
         <translation>Файл некорректен.</translation>
     </message>
