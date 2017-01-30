@@ -9,11 +9,7 @@
 #include <QtCore\QFuture>
 #include <QtConcurrent\QtConcurrent>
 
-QByteArray createData(const QString &, const QString &, const QString &, const QString &);
 bool isCorrectPDF(const QString &);
-void* loadViewerData(unsigned long *);
-bool updateViewerResources(const char*, void *, unsigned long);
-void processData(const QString &, const QString &, const QString &, const QString &, const QString &);
 
 //====================================
 // Helper class for manage errors

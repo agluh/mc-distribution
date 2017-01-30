@@ -24,9 +24,6 @@
     <ClCompile Include="gen\cpp\moc_MainDialog.cpp">
       <Filter>Generated</Filter>
     </ClCompile>
-    <ClCompile Include="crypt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="pdf.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -36,7 +33,7 @@
     <ClCompile Include="gen\res\qrc_resources.cpp">
       <Filter>Generated</Filter>
     </ClCompile>
-    <ClCompile Include="misc.cpp">
+    <ClCompile Include="Worker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -51,6 +48,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Worker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="runextensions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

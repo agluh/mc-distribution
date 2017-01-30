@@ -2,10 +2,11 @@
 #include <cassert>
 
 #include "resource.h"
+#include "Worker.h"
 
 #define IDD_DATAFILE 200
 
-void* loadViewerData(unsigned long *dataSize) {
+void* Worker::loadViewerData(unsigned long *dataSize) {
 	assert(dataSize != nullptr);
 	*dataSize = 0;
 
@@ -27,7 +28,7 @@ void* loadViewerData(unsigned long *dataSize) {
 	return nullptr;
 }
 
-bool updateViewerResources(const char* filename, void *data, unsigned long dataSize) {
+bool Worker::updateViewerResources(const char* filename, void *data, unsigned long dataSize) {
 	HANDLE hUpdateRes = BeginUpdateResource(filename, FALSE);
 	if (hUpdateRes == NULL) {
 		return false;

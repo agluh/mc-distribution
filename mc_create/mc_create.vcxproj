@@ -97,19 +97,20 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="crypt.cpp" />
     <ClCompile Include="gen\cpp\moc_MainDialog.cpp" />
     <ClCompile Include="gen\res\qrc_resources.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="misc.cpp" />
+    <ClCompile Include="Worker.cpp" />
     <ClCompile Include="pdf.cpp" />
     <ClCompile Include="res.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainDialog.hpp" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="runextensions.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="version.h" />
+    <ClInclude Include="Worker.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="gen\translations\translations_ru.ts" />

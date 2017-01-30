@@ -19,8 +19,10 @@
 #include <QtWidgets\QMessageBox>
 #include <QtConcurrent\QtConcurrent>
 
+#include "runextensions.h"
 #include "../mc_common/WaitDialog.hpp"
 #include "utils.h"
+#include "Worker.h"
 
 //====================================
 // Class for main dialog
@@ -191,7 +193,13 @@ private slots:
 		WaitDialog splash(tr("Operation in progress"), tr("Please wait"), this);
 		QFutureWatcher<void> watcher;
 		connect(&watcher, SIGNAL(finished()), &splash, SLOT(close()));
-		QFuture<void> future = QtConcurrent::run(processData, m_pdfFile, m_outputFile, trimmedLinkText, trimmedWatermarkText, trimmedCommentsText);
+		connect(&watcher, SIGNAL(progressRangeChanged(int, int)), &splash, SLOT(progressRangeChanged(int, int)));
+		connect(&watcher, SIGNAL(progressTextChanged(const QString &)), &splash, SLOT(progressTextChanged(const QString &)));
+		connect(&watcher, SIGNAL(progressValueChanged(int)), &splash, SLOT(progressValueChanged(int)));
+
+		Worker worker(m_pdfFile, m_outputFile, trimmedLinkText, trimmedWatermarkText, trimmedCommentsText);
+
+		QFuture<void> future = QtConcurrent::run(&Worker::doWork, &worker);
 		watcher.setFuture(future);
 		splash.exec();
 
