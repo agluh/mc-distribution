@@ -48,7 +48,7 @@
         <location filename="../../main.cpp" line="60"/>
         <location filename="../../main.cpp" line="93"/>
         <location filename="../../main.cpp" line="100"/>
-        <location filename="../../MainDialog.hpp" line="96"/>
+        <location filename="../../MainDialog.hpp" line="104"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
@@ -73,7 +73,7 @@
         <translation>Возникла неизвестная ошибка.</translation>
     </message>
     <message>
-        <location filename="../../MainDialog.hpp" line="97"/>
+        <location filename="../../MainDialog.hpp" line="105"/>
         <source>Key is not valid.</source>
         <translation>Неверный ключ.</translation>
     </message>

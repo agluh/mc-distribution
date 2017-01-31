@@ -230,6 +230,12 @@ protected:
 		m_createButton->setEnabled(!m_pdfFile.isEmpty() && !m_outputFile.isEmpty());
 	}
 
+	void keyPressEvent(QKeyEvent *e) {
+		if (e->key() != Qt::Key_Escape) {
+			QDialog::keyPressEvent(e);
+		}
+	}
+
 private:
 	QString m_pdfFile;
 	QString m_outputFile;

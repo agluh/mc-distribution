@@ -81,6 +81,14 @@ public:
 		return m_responseEdit->toPlainText();
 	}
 
+protected:
+
+	void keyPressEvent (QKeyEvent *e) {
+		if (e->key() != Qt::Key_Escape) {
+			QDialog::keyPressEvent(e);
+		}
+	}
+
 private slots:
 	void onResponseChanged() {
 		m_okButton->setEnabled(!m_responseEdit->toPlainText().isEmpty());

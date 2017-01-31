@@ -259,6 +259,20 @@ protected:
 		m_mainWidget->update();
 	}
 
+	void keyPressEvent(QKeyEvent *event) {
+		switch (event->key()) {
+		case Qt::Key_Left:
+			prevButtonPressed();
+			break;
+
+		case Qt::Key_Right:
+			nextButtonPressed();
+			break;
+		}
+
+		QMainWindow::keyPressEvent(event);
+	}
+
 private:
 	MainWidget *m_mainWidget;
 	QComboBox *m_zoomCombobox;

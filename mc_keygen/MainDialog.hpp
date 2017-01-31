@@ -147,6 +147,14 @@ private slots:
 		}
 	}
 
+protected:
+
+	void keyPressEvent(QKeyEvent *e) {
+		if (e->key() != Qt::Key_Escape) {
+			QDialog::keyPressEvent(e);
+		}
+	}
+
 private:
 	QPlainTextEdit *m_infoText;
 	QPlainTextEdit *m_requestText;
